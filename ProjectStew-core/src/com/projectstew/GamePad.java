@@ -15,104 +15,65 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 
-public class GamePad extends ApplicationAdapter implements ControllerListener{
+public class GamePad implements ControllerListener {
 
-	private SpriteBatch batch;
-	private Texture img;
-	private BitmapFont font;
 	private boolean hasControllers = true;
-	private String message = "Please install a controller.";
 	private Sprite sprite;
-	private Texture spriteTexture;
+	private boolean buttonY;
+	private boolean buttonX;
+	private boolean buttonA;
+	private boolean buttonB;
+	private boolean buttonLB;
+	private boolean buttonRB;
 	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-		font = new BitmapFont();
-		font.setColor(Color.WHITE);
-		
-		spriteTexture = new Texture(Gdx.files.internal("PStew_Carrot.png"));
-		sprite = new Sprite(spriteTexture);
-		
+
+	public GamePad() {
 		Controllers.addListener(this);
 		
 		if(Controllers.getControllers().size == 0){
 			hasControllers = false;
 		}
-		
 	}
 
-	@Override
 	public void dispose() {
-		batch.dispose();
-		font.dispose();
-		spriteTexture.dispose();
+		
 	}
 	
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		/*if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			if(Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT))
-				sprite.translateX(-1f);
-			else
-				sprite.translateX(-10.0f);
-		}
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-			if(Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT))
-				sprite.translateX(1f);
-			else
-				sprite.translateX(10.0f);
-		}*/
-		
-		batch.begin();
-		if(!hasControllers)
-			font.draw(batch, message,
-					Gdx.graphics.getWidth()/2 - font.getBounds(message).width/2,
-					Gdx.graphics.getHeight()/2 - font.getBounds(message).height/2);
-		else
-			batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getOriginX(), sprite.getOriginY(),
-					sprite.getWidth(), sprite.getHeight(),
-					sprite.getScaleX(),sprite.getScaleY(), sprite.getRotation());
-		//sprite.setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-		//batch.draw(img, 0, 0);
-		//font.draw(batch, "Hello World", 300, 250);
-		batch.end();
-	}
-	
+	// This method must be implemented for a GamePad to exist
 	@Override
 	public void connected(Controller controller){
 		hasControllers = true;
 	}
 	
+	// This method must be implemented for a GamePad to exist
 	@Override
 	public void disconnected(Controller controller){
 		hasControllers = false;
 	}
 	
+	
 	@Override
 	public boolean buttonDown(Controller controller, int buttonCode){
-		if(buttonCode == XBox360Pad.BUTTON_Y)
-            sprite.setY(sprite.getY() + 1);
-        if(buttonCode == XBox360Pad.BUTTON_A)
-            sprite.setY(sprite.getY()-1);
-        if(buttonCode == XBox360Pad.BUTTON_X)
-            sprite.setX(sprite.getX() - 1);
-        if(buttonCode == XBox360Pad.BUTTON_B)
-            sprite.setX(sprite.getX() + 1);
-
-        if(buttonCode == XBox360Pad.BUTTON_LB)
-            sprite.scale(-0.1f);
-        if(buttonCode == XBox360Pad.BUTTON_RB)
-            sprite.scale(0.1f);
+		
+		buttonY = (buttonCode == XBox360Pad.BUTTON_Y);
+        buttonA = (buttonCode == XBox360Pad.BUTTON_A);
+        buttonX = (buttonCode == XBox360Pad.BUTTON_X);
+        buttonB = (buttonCode == XBox360Pad.BUTTON_B);
+        buttonLB = (buttonCode == XBox360Pad.BUTTON_LB);
+        buttonRB = (buttonCode == XBox360Pad.BUTTON_RB);
+        
         return false;
 	}
 	
 	@Override
     public boolean buttonUp(Controller controller, int buttonCode) {
+		buttonY = !(buttonCode == XBox360Pad.BUTTON_Y);
+        buttonA = !(buttonCode == XBox360Pad.BUTTON_A);
+        buttonX = !(buttonCode == XBox360Pad.BUTTON_X);
+        buttonB = !(buttonCode == XBox360Pad.BUTTON_B);
+        buttonLB = !(buttonCode == XBox360Pad.BUTTON_LB);
+        buttonRB = !(buttonCode == XBox360Pad.BUTTON_RB);
+        
         return false;
     }
 	
@@ -129,6 +90,7 @@ public class GamePad extends ApplicationAdapter implements ControllerListener{
 	            sprite.rotate(-10f * value);
 		 return false;
 	}
+	
 	
 	@Override
     public boolean povMoved(Controller controller, int povCode, PovDirection value) {
