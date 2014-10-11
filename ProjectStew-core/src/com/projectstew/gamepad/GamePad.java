@@ -1,4 +1,4 @@
-package com.projectstew;
+package com.projectstew.gamepad;
 
 import com.badlogic.gdx.controllers.ControllerListener;
 import com.badlogic.gdx.controllers.Controllers;
@@ -27,10 +27,6 @@ public class GamePad implements ControllerListener {
 		if(Controllers.getControllers().size == 0){
 			hasControllers = false;
 		}
-	}
-
-	public void dispose() {
-		
 	}
 	
 	// This method must be implemented for a GamePad to exist

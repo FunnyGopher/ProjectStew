@@ -1,4 +1,4 @@
-package com.projectstew;
+package com.projectstew.gamepad;
 
 import com.badlogic.gdx.controllers.PovDirection;
 
