@@ -12,8 +12,8 @@ public class AnimatedGraphic implements GameObject {
 	private Animation animation;
 	private TextureRegion currentFrame;
 	
-	public AnimatedGraphic(TextureAtlas textrueAtlas, Animation animation) {
-		this.textureAtlas = textrueAtlas;
+	public AnimatedGraphic(TextureAtlas textureAtlas, Animation animation) {
+		this.textureAtlas = textureAtlas;
 		this.animation = animation;
 	}
 
@@ -29,7 +29,7 @@ public class AnimatedGraphic implements GameObject {
 		this.animation = animation;
 	}
 
-	public void setTextrueAtlas(TextureAtlas textrueAtlas) {
+	public void setTextureAtlas(TextureAtlas textrueAtlas) {
 		this.textureAtlas = textrueAtlas;
 	}
 
