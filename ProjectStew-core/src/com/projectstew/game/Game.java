@@ -1,18 +1,25 @@
-package com.projectstew;
+package com.projectstew.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.projectstew.gamepad.GamePad;
+import com.projectstew.player.Player;
 
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	GameTime time;
+	GamePad gamePad;
+	Player player;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		time = new GameTime();
+		gamePad = new GamePad();
+		player = new Player(200, 200, new Texture(Gdx.files.internal("Gengar.png")), gamePad);
 	}
 
 	@Override
@@ -25,13 +32,14 @@ public class Game extends ApplicationAdapter {
 	}
 	
 	private void update(GameTime gameTime) {
-		// Other things go here to update!
+		player.update(gameTime);
 	}
 	
 	private void draw(SpriteBatch spriteBatch) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		// Other things go here to draw!
+		
+		player.draw(spriteBatch);
 	}
 	
 	@Override

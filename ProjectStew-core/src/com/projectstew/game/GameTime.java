@@ -1,4 +1,4 @@
-package com.projectstew;
+package com.projectstew.game;
 
 import com.badlogic.gdx.utils.TimeUtils;
 
