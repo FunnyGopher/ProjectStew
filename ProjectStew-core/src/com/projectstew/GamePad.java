@@ -127,42 +127,41 @@ public class GamePad implements ControllerListener {
     public boolean accelerometerMoved(Controller controller, int accelerometerCode, Vector3 value) {
         return false;
     }
-    
 
-	public void setHasControllers(boolean hasControllers) {
-		this.hasControllers = hasControllers;
+	public boolean isHasControllers() {
+		return hasControllers;
 	}
 
-	public void setButtonY(boolean buttonY) {
-		this.buttonY = buttonY;
+	public boolean isButtonY() {
+		return buttonY;
 	}
 
-	public void setButtonX(boolean buttonX) {
-		this.buttonX = buttonX;
+	public boolean isButtonX() {
+		return buttonX;
 	}
 
-	public void setButtonA(boolean buttonA) {
-		this.buttonA = buttonA;
+	public boolean isButtonA() {
+		return buttonA;
 	}
 
-	public void setButtonB(boolean buttonB) {
-		this.buttonB = buttonB;
+	public boolean isButtonB() {
+		return buttonB;
 	}
 
-	public void setButtonLB(boolean buttonLB) {
-		this.buttonLB = buttonLB;
+	public boolean isButtonLB() {
+		return buttonLB;
 	}
 
-	public void setButtonRB(boolean buttonRB) {
-		this.buttonRB = buttonRB;
+	public boolean isButtonRB() {
+		return buttonRB;
 	}
 
-	public void setLeftAxis(Axis leftAxis) {
-		this.leftAxis = leftAxis;
+	public Axis getLeftAxis() {
+		return leftAxis;
 	}
 
-	public void setRightAxis(Axis rightAxis) {
-		this.rightAxis = rightAxis;
+	public Axis getRightAxis() {
+		return rightAxis;
 	}
 	
     
