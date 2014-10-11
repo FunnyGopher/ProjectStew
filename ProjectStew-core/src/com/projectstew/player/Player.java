@@ -8,7 +8,6 @@ import com.projectstew.gamepad.GamePad;
 
 public class Player extends Graphic {
 	
-	private float x, y;
 	private GamePad gamePad;
 	private Role role;
 	
@@ -21,13 +20,13 @@ public class Player extends Graphic {
 	
 	@Override
 	public void update(GameTime gameTime) {
-		sprite.translateX(gamePad.getLeftAxis().getX());
-		sprite.translateY(gamePad.getLeftAxis().getY());
+		sprite.translateX(gamePad.getLeftAxis().getX() * 5);
+		sprite.translateY(gamePad.getLeftAxis().getY() * 5);
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch) {
-		sprite.draw(batch);
+	public void draw(SpriteBatch spriteBatch) {
+		sprite.draw(spriteBatch);
 	}
 	
 	public void setRole(Role role) {

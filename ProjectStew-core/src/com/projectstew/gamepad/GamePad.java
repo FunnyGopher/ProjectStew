@@ -7,9 +7,11 @@ import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.math.Vector3;
 
 public class GamePad implements ControllerListener {
-
-	private boolean hasControllers = true;
+	private static ControllerManager controllerManager = new ControllerManager();
 	
+	private final float DEAD_ZONE = 0.6f;
+	
+	private Controller controller;
 	private boolean buttonY;
 	private boolean buttonX;
 	private boolean buttonA;
@@ -23,66 +25,61 @@ public class GamePad implements ControllerListener {
 
 	public GamePad() {
 		Controllers.addListener(this);
-		
-		if(Controllers.getControllers().size == 0){
-			hasControllers = false;
-		}
+		controller = controllerManager.getNextController();
 	}
 	
 	// This method must be implemented for a GamePad to exist
 	@Override
 	public void connected(Controller controller){
-		hasControllers = true;
 	}
 	
 	// This method must be implemented for a GamePad to exist
 	@Override
-	public void disconnected(Controller controller){
-		hasControllers = false;
+	public void disconnected(Controller controller) {
 	}
 	
 	
 	@Override
 	public boolean buttonDown(Controller controller, int buttonCode){
-		
-		buttonY = (buttonCode == XBox360Pad.BUTTON_Y);
-        buttonA = (buttonCode == XBox360Pad.BUTTON_A);
-        buttonX = (buttonCode == XBox360Pad.BUTTON_X);
-        buttonB = (buttonCode == XBox360Pad.BUTTON_B);
-        buttonLB = (buttonCode == XBox360Pad.BUTTON_LB);
-        buttonRB = (buttonCode == XBox360Pad.BUTTON_RB);
-        
+		if(controller == this.controller) {
+			buttonY = (buttonCode == XBox360Pad.BUTTON_Y);
+	        buttonA = (buttonCode == XBox360Pad.BUTTON_A);
+	        buttonX = (buttonCode == XBox360Pad.BUTTON_X);
+	        buttonB = (buttonCode == XBox360Pad.BUTTON_B);
+	        buttonLB = (buttonCode == XBox360Pad.BUTTON_LB);
+	        buttonRB = (buttonCode == XBox360Pad.BUTTON_RB);
+		}
         return false;
 	}
 	
 	@Override
     public boolean buttonUp(Controller controller, int buttonCode) {
-		buttonY = !(buttonCode == XBox360Pad.BUTTON_Y);
-        buttonA = !(buttonCode == XBox360Pad.BUTTON_A);
-        buttonX = !(buttonCode == XBox360Pad.BUTTON_X);
-        buttonB = !(buttonCode == XBox360Pad.BUTTON_B);
-        buttonLB = !(buttonCode == XBox360Pad.BUTTON_LB);
-        buttonRB = !(buttonCode == XBox360Pad.BUTTON_RB);
-        
+		if(controller == this.controller) {
+			buttonY = !(buttonCode == XBox360Pad.BUTTON_Y);
+	        buttonA = !(buttonCode == XBox360Pad.BUTTON_A);
+	        buttonX = !(buttonCode == XBox360Pad.BUTTON_X);
+	        buttonB = !(buttonCode == XBox360Pad.BUTTON_B);
+	        buttonLB = !(buttonCode == XBox360Pad.BUTTON_LB);
+	        buttonRB = !(buttonCode == XBox360Pad.BUTTON_RB);
+		}
         return false;
     }
 	
 	@Override
-	public boolean axisMoved(Controller controller, int axisCode, float value){
-		// Analog Stick
-		/*if(axisCode == XBox360Pad.AXIS_LEFT_X)
-			sprite.translateX(10f * value);
-		if(axisCode == XBox360Pad.AXIS_LEFT_Y)
-			sprite.translateY(-10f * value);*/
+	public boolean axisMoved(Controller controller, int axisCode, float value){		
+		if(controller == this.controller) {
+			if(controller.getAxis(XBox360Pad.AXIS_LEFT_X) > DEAD_ZONE  || controller.getAxis(XBox360Pad.AXIS_LEFT_X) < -DEAD_ZONE)
+				leftAxis.setX(controller.getAxis(XBox360Pad.AXIS_LEFT_X) * 1f);
+			else
+				leftAxis.setX(0);
+			
+			if(controller.getAxis(XBox360Pad.AXIS_LEFT_Y) > DEAD_ZONE  || controller.getAxis(XBox360Pad.AXIS_LEFT_Y) < -DEAD_ZONE)
+				leftAxis.setY(controller.getAxis(XBox360Pad.AXIS_LEFT_Y) * -1f);
+			else
+				leftAxis.setY(0);
+		}
 		
-		 if(controller.getAxis(XBox360Pad.AXIS_LEFT_X) > 0.2f  || 
-                 controller.getAxis(XBox360Pad.AXIS_LEFT_X) < -0.2f)
-            leftAxis.setX(controller.getAxis(XBox360Pad.AXIS_LEFT_X) * 10f);
-         if(controller.getAxis(XBox360Pad.AXIS_LEFT_Y) > 0.2f  || 
-                 controller.getAxis(XBox360Pad.AXIS_LEFT_Y) < -0.2f)
-             leftAxis.setY(controller.getAxis(XBox360Pad.AXIS_LEFT_Y) * -10f);
-         
-		 return false;
+		return false;
 	}
 	
 	
@@ -114,10 +111,6 @@ public class GamePad implements ControllerListener {
     public boolean accelerometerMoved(Controller controller, int accelerometerCode, Vector3 value) {
         return false;
     }
-
-	public boolean isHasControllers() {
-		return hasControllers;
-	}
 
 	public boolean isButtonY() {
 		return buttonY;
