@@ -2,9 +2,9 @@ package com.projectstew.player;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.projectstew.GamePad;
-import com.projectstew.GameTime;
 import com.projectstew.Graphic;
+import com.projectstew.game.GameTime;
+import com.projectstew.gamepad.GamePad;
 
 public class Player extends Graphic {
 	
