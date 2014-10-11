@@ -3,25 +3,39 @@ package com.projectstew;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	GameTime time;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		time = new GameTime();
 	}
 
 	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	public void render() {
+		update(time);
+		
 		batch.begin();
-		batch.draw(img, 0, 0);
+		draw(batch);
 		batch.end();
+	}
+	
+	private void update(GameTime gameTime) {
+		// Other things go here to update!
+	}
+	
+	private void draw(SpriteBatch spriteBatch) {
+		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		// Other things go here to draw!
+	}
+	
+	@Override
+	public void dispose() {
+		batch.dispose();
 	}
 }
