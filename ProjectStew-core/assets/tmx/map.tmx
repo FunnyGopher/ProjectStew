@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="GivenTileSet" tilewidth="32" tileheight="32">
+  <image source="tileset.png" width="512" height="512"/>
+ </tileset>
+ <layer name="background" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztl0EOwiAQRfFe6gnUXkDtNfUG9CBqonGpJrrQ30VTQ5gKw5Sx0cXbtKTvM0MKFMaYIpAN2EaMl6Lx1lSKfk13St3HYAKmH8aVPc19BuZgoTD3miVYgTXxfgf24KDU9wu4ghvhD/nGEZyYfl/fY/138BCui9b/5u9v/b4M1HqRxhL+80B7wKkb1YNcGZoepGYo3+CuA+laxGZwc7hZcmS0hs7iPu+7TtZDlTlDyJrRzpBjD6eQ2MOfwIz4/iH1gEtX73L4u85f33CO+FW/1B0m1U/dYV7t3nj2
+  </data>
+ </layer>
+ <layer name="sprites" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAADwbhAAAAE=
+  </data>
+ </layer>
+ <layer name="foreground" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIx0cBeJjQHx8gOy/CsTXgPg6BWacAuLT1HEOWeAWEN8eQPtHwSigF7g70A4YBaNgFAw7MFqHYwfvgfjDQDuCABiNu1EwCoYeAADkZxFv
+  </data>
+ </layer>
+</map>
