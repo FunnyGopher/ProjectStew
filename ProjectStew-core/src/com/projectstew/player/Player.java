@@ -5,7 +5,12 @@ import java.util.Map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.objects.TextureMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.projectstew.game.GameTime;
+import com.projectstew.game.TiledMapRendererWithSprites;
 import com.projectstew.gamepad.GamePad;
 import com.projectstew.graphic.Direction;
 import com.projectstew.graphic.Graphic;
@@ -29,7 +34,7 @@ public class Player extends Graphic {
 		this.x = x;
 		this.y = y;
 		this.gamePad = gamePad;
-	}
+	}	
 	
 	@Override
 	public void update(GameTime gameTime) {		
@@ -63,7 +68,7 @@ public class Player extends Graphic {
 	
 	@Override
 	public void draw(SpriteBatch spriteBatch) {
-		spriteBatch.draw(sprite.getTexture(), x, y);
+		spriteBatch.draw(getTexture(), x, y);
 	}
 	
 	public void setRole(Role role) {

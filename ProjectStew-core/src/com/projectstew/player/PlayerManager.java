@@ -1,6 +1,8 @@
 package com.projectstew.player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,36 +13,33 @@ import com.projectstew.graphic.Direction;
 
 public class PlayerManager implements GameObject {
 	
-	Player player1, player2, player3, player4;
-	GamePad gamePad1, gamePad2, gamePad3, gamePad4;
+	List<Player> players;
+	List<GamePad> gamepads;
 	
 	public PlayerManager() {
-		gamePad1 = new GamePad();
-		//gamePad2 = new GamePad();
-		//gamePad3 = new GamePad();
-		//gamePad4 = new GamePad();
+		players = new ArrayList<Player>();
+		gamepads = new ArrayList<GamePad>();
 		
-		player1 = new Player(100, 100, Role.GATHERER, gamePad1);
-		player1.setImgMap(getGathererImgMap());
-		//player2 = new Player(200, 200, new Texture(Gdx.files.internal("PStew_Carrot.png")), gamePad2);
-		//player3 = new Player(200, 200, new Texture(Gdx.files.internal("PStew_Stick.png")), gamePad3);
-		//player4 = new Player(200, 200, new Texture(Gdx.files.internal("PStew_Potato.png")), gamePad4);
+		gamepads.add(new GamePad());
+		gamepads.add(new GamePad());
+		gamepads.add(new GamePad());
+		gamepads.add(new GamePad());
+		
+		players.add(new Player(100, 100, Role.GATHERER, gamepads.get(0)));
+		players.get(0).setImgMap(getGathererImgMap());
 	}
-
+	
 	@Override
 	public void update(GameTime gameTime) {
-		player1.update(gameTime);
-		//player2.update(gameTime);
-		//player3.update(gameTime);
-		//player4.update(gameTime);
+		for(Player player : players) {
+			player.update(gameTime);
+		}
 	}
 
 	@Override
 	public void draw(SpriteBatch spriteBatch) {
-		player1.draw(spriteBatch);
-		//player2.draw(spriteBatch);
-		//player3.draw(spriteBatch);
-		//player4.draw(spriteBatch);
+		for(Player player : players)
+			player.draw(spriteBatch);
 	}
 	
 	private Map<Direction, String> getGathererImgMap() {
