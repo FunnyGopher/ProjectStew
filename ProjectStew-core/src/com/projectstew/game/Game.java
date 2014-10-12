@@ -17,7 +17,7 @@ public class Game extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		time = new GameTime();
 		players = new PlayerManager();
-		level = new Level("MyCraptasticMap.tmx");
+		level = new Level("tmx/MyCraptasticMap.tmx");
 	}
 
 	@Override
