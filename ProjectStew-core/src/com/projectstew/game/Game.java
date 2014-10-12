@@ -10,18 +10,21 @@ public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	GameTime time;
 	PlayerManager players;
+	Level level;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		time = new GameTime();
 		players = new PlayerManager();
+		level = new Level("MyCraptasticMap.tmx");
 	}
 
 	@Override
 	public void render() {
 		update(time);
-		
+		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		draw(batch);
 		batch.end();
@@ -29,13 +32,14 @@ public class Game extends ApplicationAdapter {
 	
 	private void update(GameTime gameTime) {
 		players.update(gameTime);
+		level.update(gameTime);
 	}
 	
 	private void draw(SpriteBatch spriteBatch) {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
 		players.draw(spriteBatch);
+		level.draw(spriteBatch);
+		
+		
 	}
 	
 	@Override

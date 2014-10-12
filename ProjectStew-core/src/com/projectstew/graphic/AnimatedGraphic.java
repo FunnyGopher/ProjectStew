@@ -1,17 +1,20 @@
-package com.projectstew;
+package com.projectstew.graphic;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.projectstew.GameObject;
+import com.projectstew.game.GameTime;
 
-public abstract class AnimatedGraphic implements GameObject{
+public class AnimatedGraphic implements GameObject {
+	
 	private TextureAtlas textureAtlas;
 	private Animation animation;
 	private TextureRegion currentFrame;
 	
-	public AnimatedGraphic(TextureAtlas textrueAtlas, Animation animation) {
-		this.textureAtlas = textrueAtlas;
+	public AnimatedGraphic(TextureAtlas textureAtlas, Animation animation) {
+		this.textureAtlas = textureAtlas;
 		this.animation = animation;
 	}
 
@@ -27,7 +30,7 @@ public abstract class AnimatedGraphic implements GameObject{
 		this.animation = animation;
 	}
 
-	public void setTextrueAtlas(TextureAtlas textrueAtlas) {
+	public void setTextureAtlas(TextureAtlas textrueAtlas) {
 		this.textureAtlas = textrueAtlas;
 	}
 

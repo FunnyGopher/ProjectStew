@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="GivenTileSet" tilewidth="32" tileheight="32">
+  <image source="tileset.png" width="512" height="512"/>
+ </tileset>
+ <layer name="BackGround" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKFr+P3brMdQcNVUVVXV1w8cTTwQ
+  </data>
+ </layer>
+ <layer name="Roads" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0kEKACAIBMD+/yL9Qf2qLoGHoHANiVaQDobDgqX4S0brwb86ugEOuveWz/zMz/yYr2aP90X8ZubeF/GRyr4/+vTp0//dl01PfzWL8CvQEX5WZfu37uq0svPTf9/v4mx+iA==
+  </data>
+ </layer>
+ <layer name="Trees" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlzsLQjEMhe///18q6KyCzirorIIung5ZSvNo0/Si+MGZahPI4/Q6Td/DGtoE51hAS2hVODtAx8D4iS20g/aFsyt0E2Jb6iPFT5ygM3QpnL2gtxDbUh8pfuIOPaCnEqeEVh9vfA2tPn/6MMIHpLw9fKAFymuZ8wgor3fOrf3Lf6fl1byVyPvH3avts+atRN4/7l5tnzVvJfI6cvdq+9zqrZGe/AtY5zoK61x74XzBOtdeuH0fNZ89fb3ljez5/TLXG0nM9UYSNbUctd9cHut+e7+7uDzW/fbOFJfHut/emfL6SMT/iw+yWIiN
+  </data>
+ </layer>
+</map>

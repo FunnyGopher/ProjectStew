@@ -1,7 +1,8 @@
-package com.projectstew;
+package com.projectstew.graphic;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.projectstew.GameObject;
 
 public abstract class Graphic implements GameObject {
 
@@ -36,11 +37,16 @@ public abstract class Graphic implements GameObject {
 		return y;
 	}
 	
-	public void set(float y) {
-		this.y = y;
+	public void setTexture(Texture texture) {
+		this.texture = texture;
+		this.sprite = new Sprite(this.texture, (int) x, (int) y, texture.getWidth(), texture.getHeight());
 	}
 	
 	public void setX(float x) {
 		this.x = x;
+	}
+	
+	public void setY(float y) {
+		this.y = y;
 	}
 }
