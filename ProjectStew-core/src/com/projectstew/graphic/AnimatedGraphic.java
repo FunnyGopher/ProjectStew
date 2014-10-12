@@ -1,9 +1,10 @@
-package com.projectstew;
+package com.projectstew.graphic;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.projectstew.GameObject;
 import com.projectstew.game.GameTime;
 
 public class AnimatedGraphic implements GameObject {

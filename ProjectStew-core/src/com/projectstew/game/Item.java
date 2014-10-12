@@ -2,7 +2,7 @@ package com.projectstew.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.projectstew.Graphic;
+import com.projectstew.graphic.Graphic;
 
 public class Item extends Graphic {
 	
