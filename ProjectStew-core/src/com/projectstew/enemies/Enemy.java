@@ -2,8 +2,8 @@ package com.projectstew.enemies;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.projectstew.Graphic;
 import com.projectstew.game.GameTime;
+import com.projectstew.graphic.Graphic;
 
 public class Enemy extends Graphic {
 	
