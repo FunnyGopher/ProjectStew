@@ -54,8 +54,8 @@ public class MainMenu implements Screen {
 
 	@Override
 	public void show() {
-		white = new BitmapFont(Gdx.files.internal("fonts/white.fnt"), false);
-		//black = new BitmapFont(Gdx.files.internal("fonts/black.fnt"), false);
+		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
+		//black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		
 		stage = new Stage();
 		

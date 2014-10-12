@@ -25,14 +25,14 @@ public class PlayerManager implements GameObject {
 		gamepads.add(new GamePad());
 		gamepads.add(new GamePad());
 		
-		players.add(new Player(100, 100, Role.GATHERER, gamepads.get(0)));
+		//players.add(new Player(100, 100, Role.GATHERER, gamepads.get(0)));
 		players.get(0).setImgMap(getGathererImgMap());
 	}
 	
 	@Override
 	public void update(GameTime gameTime) {
 		for(Player player : players) {
-			player.update(gameTime);
+			//player.update(gameTime);
 		}
 	}
 
