@@ -4,22 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.projectstew.player.Player;
+import com.projectstew.player.PlayerManager;
 
 public class Play implements Screen {
 	
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
-	private Player player;
-	
-	
-	
+	private PlayerManager players;
 	
 	@Override
 	public void render(float delta) {
@@ -28,9 +23,8 @@ public class Play implements Screen {
 		
 		renderer.setView(camera);
 		renderer.render();
-		
 		renderer.getSpriteBatch().begin();
-		player.draw(renderer.getSpriteBatch());
+		players.draw(renderer.getSpriteBatch(), map);
 		renderer.getSpriteBatch().end();
 	}
 
@@ -45,9 +39,9 @@ public class Play implements Screen {
 	public void show() {
 		map = new TmxMapLoader().load("map/map.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map);
-		camera = new OrthographicCamera(); 
-		
-		player = new Player(new Sprite(new Texture("characters/gatherer/south.png")));
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false);
+		players = new PlayerManager();
 	}
 
 	@Override

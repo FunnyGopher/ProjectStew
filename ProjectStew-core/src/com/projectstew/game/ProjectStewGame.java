@@ -1,6 +1,8 @@
 package com.projectstew.game;
 
 import com.badlogic.gdx.Game;
+import com.projectstew.screens.MainMenu;
+import com.projectstew.screens.Play;
 import com.projectstew.screens.Splash;
 
 public class ProjectStewGame extends Game {
@@ -8,7 +10,7 @@ public class ProjectStewGame extends Game {
 	public static final String TITLE = "Project Stew", VERSION = "Clam Chowder";
 	
 	@Override
-	public void create () {
+	public void create() {
 		setScreen(new Splash());
 	}
 	
